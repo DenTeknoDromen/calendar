@@ -28,14 +28,14 @@ def test_click(event):
     print("Click")
 
 for days in range (1, days_to_display + 1):
-    days_col = ttk.Label(root, text=weekdays[days - 1])
-    days_col.grid(column=days, row=0, sticky=tk.W, padx=5, pady=5)
+    days_col = tk.Frame(root, relief="sunken", background="Blue") #text=weekdays[days - 1]/*, background="Blue")
+    days_col.grid(column=days, row=0, sticky=tk.W)
     days_col.bind("<Button-1>", test_click)
 
 
 for hours in range(1, time + 1):
-    time_row = ttk.Label(root, text=f"kl: {hours + hours_to_display[0]}")
-    time_row.grid(column=0, row=hours, sticky=tk.W, padx=5, pady=5)
+    time_row = ttk.Label(root, text=f"kl: {hours + hours_to_display[0]}", background="Yellow")
+    time_row.grid(column=0, row=hours, sticky=tk.W,)
 
 test = ttk.Label(root, background="Red")
 test.grid(column=1, row=1, rowspan=5)
