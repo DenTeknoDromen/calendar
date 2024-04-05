@@ -19,12 +19,16 @@ week_days = ["Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag", "Sö
 # buttons = ttk.Frame(frame)
 # display = ttk.Frame(frame, borderwidth=5, relief="flat", width=1600, height=800)
 
-cal_vector = v.get_calendar_vector()
+toolbar = Canvas(root, width=v.get_toolbar_width(), height=v.get_toolbar_height(),background="Cyan")
+toolbar.grid(row=0, column=0)
 
+cal_vector = v.get_calendar_vector()
 # Draw base gui
-cnvs = Canvas(root, width=1600, height=900, background="White")
-cnvs.create_rectangle((cal_vector[0], cal_vector[1]), (cal_vector[2], cal_vector[3]))
+cnvs = Canvas(root, width=v.get_cal_width(), height=v.get_cal_height(), highlightthickness=1, highlightbackground="black", background="White")
+#cnvs.create_rectangle((cal_vector[0], cal_vector[1]), (cal_vector[2], cal_vector[3]))
 cnvs.create_line((cal_vector[0], cal_vector[1] + 25), (cal_vector[2], cal_vector[1] + 25))
+
+cnvs.grid(row=0, column=1)
 
 # Draw columns
 column_width = v.get_cal_width() / 7
@@ -61,5 +65,5 @@ for x in range(0, 7):
 #     cnvs.create_text((cal_vector[0] - 10, y), text=x)
 #     cnvs.create_line((cal_vector[0], y), (cal_vector[2], y))
 
-cnvs.pack()
+#cnvs.pack()
 root.mainloop()
